@@ -11,6 +11,7 @@ import Nav from '../Components/Nav';
 import Note from '../Components/Note';
 
 import { useUser } from '../hooks/useUser';
+import RegisterForm from '../Components/Register/RegisterForm';
 
 
 function App() {
@@ -23,14 +24,10 @@ function App() {
     deleteNote}= useNotes()
 
   const {
-    username,
-    password,
     user,
     error,
     handleLogout,
-    handleLogin,
-    handlePasswordChange,
-    handleUsernameChange
+    handleLogin
   } = useUser()
 
   useEffect(()=>{
@@ -47,11 +44,9 @@ function App() {
 
       {loading ? "Cargando..." : ""}
 
-      <Nav handleLogout={handleLogout}/>
+      <Nav handleLogout={handleLogout} user={user}/>
 
 
-  
-      <h1>Notes</h1>
 
       <span style={{color: "red"}}><Notication message={error} /> </span>
 
@@ -66,16 +61,11 @@ function App() {
               deleteNote={deleteNote}
               notes={notes}
               /> 
-              : <LoginForm
-              username={username}
-              password={password}
-              handleUsernameChange={handleUsernameChange}
-              handlePasswordChange={handlePasswordChange}
-              handleSubmit={handleLogin}
-           />
+              : <RegisterForm handleLogin={handleLogin}/>
            } />
 
             <Route path='/notes/:id' element={<Note/>}/>
+
 
           </Routes>
       </BrowserRouter>

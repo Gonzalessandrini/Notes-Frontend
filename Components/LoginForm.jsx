@@ -23,7 +23,7 @@ export default function LoginForm ({handleSubmit,handlePasswordChange,handleUser
              />
 
   </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-primary">Login</button>
 </form>
 
 

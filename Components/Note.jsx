@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
-const baseUrl = 'http://localhost:3001/api/notes'
+import noteService from '../services/notes'
 
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -11,20 +9,26 @@ const Note = () => {
   const [note, setNote] = useState({});
 
 
-  useEffect(() => {
-    if (!id) return;
-    const getNote = async () => {
-      const { data } = await axios.get(`${baseUrl}/${id}`);
-      setNote(data);
-     
-    };
-    getNote();
+  useEffect( () => {
+    const getNote= ()=>{
+      if (!id) return;
+    noteService.getNote(id)
+    .then(note=> {setNote(note)})
+    }
+
+    getNote()
+
+    console.log(note)
+    
+
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+      e.preventDefault();
+
+      noteService.update(id, note)
     
-      await axios.put(`${baseUrl}/${id}`, note);
+      
       return navigate("/");
     }
   
@@ -48,7 +52,7 @@ const Note = () => {
             className="form-control"
             placeholder="content..."
             name="content"
-            value={note.content}
+            value={note.content || ""}
             onChange={handleChange}
             
           />

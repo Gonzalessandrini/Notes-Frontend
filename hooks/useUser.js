@@ -3,8 +3,7 @@ import noteService from '../services/notes'
 import loginService from "../services/login";
 
 export function useUser (){
-    const [username, setUsername]= useState("")
-    const [password, setPassword]= useState("")
+    
     const [user, setUser]= useState(null)
     const [error, setError]= useState(null)
 
@@ -16,9 +15,7 @@ export function useUser (){
           noteService.setToken(user.token)
         }
       }, [])
-    const  handleUsernameChange= (e) => {setUsername(e.target.value)}
 
-    const handlePasswordChange=  (e) => {setPassword(e.target.value)}
       
 
     const handleLogout= ()=>{
@@ -27,7 +24,7 @@ export function useUser (){
         window.localStorage.removeItem('loggedNoteAppUser')
       }
       
-      const handleLogin = async (event) => {
+      const handleLogin = async (event, username, password) => {
         event.preventDefault()
       
         try {
@@ -44,10 +41,10 @@ export function useUser (){
             noteService.setToken(user.token)
             await console.log(user)
             await setUser(user)
-            setUsername('')
-            setPassword('')
+            
           } 
           }catch(e) {
+            console.error(e)
             setError('Incorrect user or password')
             setTimeout(() => {
               setError(null)
@@ -56,5 +53,5 @@ export function useUser (){
       }
 
 
-      return {username,password,user,error, handleLogout,handleLogin,handleUsernameChange,handlePasswordChange}
+      return {user,error,handleLogin,handleLogout}
     }

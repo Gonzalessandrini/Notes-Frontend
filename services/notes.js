@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/api/notes'
+const baseUrl = 'https://notes-backend-lqnu.onrender.com/api/notes'
 
 let token = null
 
@@ -27,6 +27,17 @@ const getAll = () => {
       //   }
       // ))
 }
+
+  const getNote =  (id) => {
+
+    const config = {
+      headers: {
+        Authorization: token
+      }}
+
+    const response =  axios.get(`${baseUrl}/${id}`,config);
+    return response.then(response => response.data)
+  }
 
 
 
@@ -63,4 +74,4 @@ const deleted= (id)=>{
   
 }
 
-export default {update, setToken,create,deleted,getAll }
+export default {update, setToken,create,deleted,getAll,getNote }
