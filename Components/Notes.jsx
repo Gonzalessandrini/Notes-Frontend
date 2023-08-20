@@ -4,33 +4,11 @@ import { Link } from "react-router-dom"
 
 function ListOfNotes ({notes,deleteNote}){
     return(
-//     <div >
-//         <ol>
-//             {
-//                 notes.map(note=> (
-//                     <li key={note.id}>     
 
-// <strong><p>{note.content}</p></strong>
-//                         <time><small>{note.date}</small></time>
-//                         <button onClick={()=>{deleteNote(note.id)}}>Delete</button>
-                    
-//                     <Link to={`/notes/${note.id}`}>
-//                         <button>Update</button>
-//                     </Link>
-                     
-                        
-                        
-                        
-                        
-//                      </li>
-//                 ))
-//             }
-//         </ol>
-//     </div>
 
 <>
         
-        <table className="table table-striped table-light">
+        <table className="table table-striped table-light" style={{border:"1px "}}>
           <thead>
             <tr>
               <th>Content</th>

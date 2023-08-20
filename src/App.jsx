@@ -11,7 +11,8 @@ import Nav from '../Components/Nav';
 import Note from '../Components/Note';
 
 import { useUser } from '../hooks/useUser';
-import RegisterForm from '../Components/Register/RegisterForm';
+import RegisterForm from '../Components/RegisterForm';
+
 
 
 function App() {
@@ -36,11 +37,8 @@ function App() {
 
   return (
 
-    <>
-
-    <div className='row'>
-
-    <BrowserRouter>
+<>
+<BrowserRouter>
 
       {loading ? "Cargando..." : ""}
 
@@ -70,8 +68,10 @@ function App() {
           </Routes>
       </BrowserRouter>
 
-    </div>
-    </>
+
+</>  
+
+
 
   )
 }

@@ -43,27 +43,30 @@ const Note = () => {
   return (
     
 
-      <div className="container">
+      <div className="container py-4">
+
         
-        <form className="post">
-        <div>
+                
+       <form >
+        <div className="px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
         <input
             type="text"
-            className="form-control"
+            className="form-control d-inline-block mb-0"
+            style={{width: "80%"}}
             placeholder="content..."
             name="content"
             value={note.content || ""}
             onChange={handleChange}
             
           />
-        </div>
-          
-          
-          <button onClick={handleSubmit} className="btn btn-primary">
+          <button onClick={handleSubmit} className="btn btn-primary ml-2" style={{marginLeft:"2%"}}>
             Update
           </button>
+
+        
+        </div>
           
-        </form>
+        </form> 
 
        
       </div>

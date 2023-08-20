@@ -26,7 +26,9 @@ export default function NoteForm ({addNote, deleteNote,notes}) {
 
     return(
 
-      <>
+      <section>
+        
+      <div className="row"> 
 
       <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white" >
    
@@ -54,7 +56,11 @@ export default function NoteForm ({addNote, deleteNote,notes}) {
         <Notes deleteNote={deleteNote} notes={notes}/>
       </div>
 
-      </>
+      </div>
+
+      
+
+      </section>
       
 
    )
