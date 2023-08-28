@@ -4,11 +4,8 @@ import { Routes, Route, BrowserRouter} from 'react-router-dom';
 import Note from '../Components/Note';
 
 import { UserProvider} from '../Components/UserContext';
-import NoteList from '../Components/Application';
-import { Notes } from '../Components/Notes';
-import RegisterForm from '../Components/RegisterForm';
 import Application from '../Components/Application';
-import LoginForm from '../Components/LoginForm';
+import LoginForm from '../Components/loginAndRegister/LoginForm';
 
 
 

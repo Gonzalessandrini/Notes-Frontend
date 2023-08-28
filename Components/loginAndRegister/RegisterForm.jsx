@@ -1,7 +1,7 @@
 import './register.css'
 import { useState} from "react"
-import registerService from "../services/register"
-import { useUser } from './UserContext'
+import registerService from "../../services/register"
+import { useUser } from '../UserContext'
 import { Link } from 'react-router-dom'
 
 
@@ -10,7 +10,6 @@ export default function RegisterForm () {
     const [name, setName]= useState("")
     const [username, setUsername]= useState("")
     const [password, setPassword]= useState("")
-    const [active, setActive]= useState(false)
 
     const {handleLogin}= useUser()
 
@@ -27,9 +26,6 @@ export default function RegisterForm () {
             })
 
            await console.log(userRegister, 'Registrado exitosamente')
-
-
-           setActive(!active)
            
 
 

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import './login.css'
-import Nav from "./Nav"
+import Nav from "../Nav"
 import { useState} from "react"
-import registerService from "../services/register"
+import registerService from "../../services/register"
 import { useNavigate } from "react-router-dom"
-import { useUser } from "./UserContext"
+import { useUser } from "../UserContext"
 
 export default function LoginForm () {
 
