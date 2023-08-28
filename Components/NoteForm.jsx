@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { Notes } from "./Notes"
+import { useNotes } from "../hooks/useNotes"
 
-// import { useNotes } from "../hooks/useNotes"
+export default function NoteForm () {
 
-export default function NoteForm ({addNote, deleteNote,notes}) {
+   const {addNote} = useNotes()
 
     const [newNote,setNewNote]= useState('')
 
@@ -53,7 +54,7 @@ export default function NoteForm ({addNote, deleteNote,notes}) {
       </div>
 
       <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
-        <Notes deleteNote={deleteNote} notes={notes}/>
+        <Notes />
       </div>
 
       </div>

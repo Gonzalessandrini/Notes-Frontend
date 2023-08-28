@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import noteService from '../services/notes'
 
 import { useParams, useNavigate } from "react-router-dom";
+import Nav from "./Nav";
 
 const Note = () => {
   const navigate = useNavigate();
@@ -17,6 +18,8 @@ const Note = () => {
     }
 
     getNote()
+
+    
 
     console.log(note)
     
@@ -41,35 +44,40 @@ const Note = () => {
 
 
   return (
-    
-
-      <div className="container py-4">
+    <>
+    <Nav/>
+    <div className="container py-4">
+        
+        
 
         
                 
-       <form >
-        <div className="px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-        <input
-            type="text"
-            className="form-control d-inline-block mb-0"
-            style={{width: "80%"}}
-            placeholder="content..."
-            name="content"
-            value={note.content || ""}
-            onChange={handleChange}
-            
-          />
-          <button onClick={handleSubmit} className="btn btn-primary ml-2" style={{marginLeft:"2%"}}>
-            Update
-          </button>
-
+        <form >
+         <div className="px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
+         <input
+             type="text"
+             className="form-control d-inline-block mb-0"
+             style={{width: "80%"}}
+             placeholder="content..."
+             name="content"
+             value={note.content || ""}
+             onChange={handleChange}
+             
+           />
+           <button onClick={handleSubmit} className="btn btn-primary ml-2" style={{marginLeft:"2%"}}>
+             Update
+           </button>
+         
+         </div>
+           
+         </form> 
+ 
         
-        </div>
-          
-        </form> 
+       </div>
 
-       
-      </div>
+    </>
+
+      
   );
 };
 

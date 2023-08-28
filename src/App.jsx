@@ -1,66 +1,28 @@
 import './App.css';
-import { useEffect} from 'react';
 import { Routes, Route, BrowserRouter} from 'react-router-dom';
-
-import LoginForm from '../Components/LoginForm';
-import NoteForm from '../Components/NoteForm';
-import Notication from '../Components/Notification'
-import { useNotes } from '../hooks/useNotes'
-import Nav from '../Components/Nav';
 
 import Note from '../Components/Note';
 
-import { useUser } from '../hooks/useUser';
+import { UserProvider} from '../Components/UserContext';
+import NoteList from '../Components/Application';
+import { Notes } from '../Components/Notes';
 import RegisterForm from '../Components/RegisterForm';
+import Application from '../Components/Application';
+import LoginForm from '../Components/LoginForm';
 
 
 
 function App() {
 
-  const {
-    notes,
-    loading,
-    getNotes,
-    addNote,
-    deleteNote}= useNotes()
-
-  const {
-    user,
-    error,
-    handleLogout,
-    handleLogin
-  } = useUser()
-
-  useEffect(()=>{
-    getNotes()
-},[getNotes])
-
   return (
 
-<>
+<UserProvider>
 <BrowserRouter>
-
-      {loading ? "Cargando..." : ""}
-
-      <Nav handleLogout={handleLogout} user={user}/>
-
-
-
-      <span style={{color: "red"}}><Notication message={error} /> </span>
-
           <Routes>
 
-              <Route path='/' element={
-              user 
-              
-              ? 
-              <NoteForm
-              addNote={addNote}
-              deleteNote={deleteNote}
-              notes={notes}
-              /> 
-              : <RegisterForm handleLogin={handleLogin}/>
-           } />
+              <Route path='/' element={<Application/>}/>
+
+              <Route path='/register' element={<LoginForm/>}/>
 
             <Route path='/notes/:id' element={<Note/>}/>
 
@@ -69,7 +31,7 @@ function App() {
       </BrowserRouter>
 
 
-</>  
+</UserProvider>  
 
 
 

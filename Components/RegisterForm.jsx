@@ -1,15 +1,20 @@
 import './register.css'
 import { useState} from "react"
 import registerService from "../services/register"
-import { useUser } from "../hooks/useUser"
+import { useUser } from './UserContext'
+import { Link } from 'react-router-dom'
 
 
-export default function RegisterForm ({handleLogin}) {
+export default function RegisterForm () {
 
     const [name, setName]= useState("")
     const [username, setUsername]= useState("")
     const [password, setPassword]= useState("")
     const [active, setActive]= useState(false)
+
+    const {handleLogin}= useUser()
+
+
 
     const handleRegister= async (event)=>{
         event.preventDefault()
@@ -66,13 +71,16 @@ export default function RegisterForm ({handleLogin}) {
   
       <div className="col-lg-5 bg-dark d-flex flex-column align-items-end min-vh-100">
                   <div className="px-lg-5 pt-lg-4 pb-lg-3 p-4 mb-auto w-100">
-                      <img src='Components/logo.png' className="img-fluid" />
+                      <img className='logo'></img>
                   </div>
                   <div className="align-self-center w-100 px-lg-5 py-lg-4 p-4">
                   <h1 className="font-weight-bold mb-4">Bienvenido</h1>
-                  <form onSubmit={(e)=>handleLogin(e,username,password)} className="mb-5">
+                  <form onSubmit={
+                    (e)=>handleLogin(e, username,password)
+                    
+                    } className="mb-5">
                       <div className="mb-4">
-                        <label  className="form-label font-weight-bold">Email</label>
+                        <label  className="form-label font-weight-bold">Username</label>
                         <input type="text" onChange={(e)=>{setUsername(e.target.value)}} className="form-control bg-dark-x border-0 " id="exampleInputEmail1" placeholder="Ingresa tu email" aria-describedby="emailHelp"/>
                       </div>
                       <div className="mb-4">
@@ -86,7 +94,7 @@ export default function RegisterForm ({handleLogin}) {
                   
                   </div>
                   <div className="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-                      <p className="d-inline-block mb-0">¿Todavia no tienes una cuenta?</p> <a href="" className="text-light font-weight-bold text-decoration-none">Crea una ahora</a>
+                      <p className="d-inline-block mb-0">¿Todavia no tienes una cuenta?</p> <Link to={'/register'}><a href="" className="text-light font-weight-bold text-decoration-none">Crea una ahora</a></Link>
                   </div>
               </div>
   

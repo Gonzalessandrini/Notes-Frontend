@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const baseUrl = 'https://notes-backend-lqnu.onrender.com/api/notes'
+const baseUrl = 'http://localhost:3001/api/notes'
+
+
 
 let token = null
 
