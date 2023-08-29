@@ -11,12 +11,44 @@ export default function LoginForm () {
   const [name, setName]= useState("")
     const [username, setUsername]= useState("")
     const [password, setPassword]= useState("")
-    const {handleLogin} = useUser()
+    const {handleLogin,error,setError} = useUser()
     const navigate = useNavigate()
 
 
     const handleRegister= async (event)=>{
         event.preventDefault()
+
+        if (!name || !username || !password) {
+          setError('Please fill out all fields.');
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+          return;
+        }
+
+        if (!/^[a-zA-Z0-9\s]+$/.test(name)) {
+          setError('Name must contain only letters, numbers, and spaces.');
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+          return;
+        }
+
+        if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+          setError('Username must contain only letters, numbers, and underscores.');
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+          return;
+        }
+
+        if (!/(?=.*[A-Z])(?=.*[0-9])/.test(password)) {
+          setError('Password must contain at least one uppercase letter and one number.');
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+          return;
+        }
 
         try{
            const userRegister= await registerService.createUser({
@@ -75,6 +107,8 @@ export default function LoginForm () {
                       </div>
                       <button type="submit" className="btn btn-primary w-100">Registrarte</button>
                     </form>
+
+                    <span style={{color:"red"}}>{error}</span>
   
                   
                   </div>

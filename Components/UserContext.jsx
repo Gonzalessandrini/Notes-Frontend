@@ -56,6 +56,7 @@ export function UserProvider({ children }) {
   const contextValue = {
     user,
     error,
+    setError,
     handleLogin,
     handleLogout,
   };

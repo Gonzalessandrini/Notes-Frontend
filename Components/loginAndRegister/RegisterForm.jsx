@@ -1,38 +1,16 @@
 import './register.css'
 import { useState} from "react"
-import registerService from "../../services/register"
 import { useUser } from '../UserContext'
 import { Link } from 'react-router-dom'
 
 
 export default function RegisterForm () {
 
-    const [name, setName]= useState("")
     const [username, setUsername]= useState("")
     const [password, setPassword]= useState("")
 
-    const {handleLogin}= useUser()
+    const {handleLogin,error}= useUser()
 
-
-
-    const handleRegister= async (event)=>{
-        event.preventDefault()
-
-        try{
-           const userRegister= registerService.createUser({
-                name,
-                username,
-                password
-            })
-
-           await console.log(userRegister, 'Registrado exitosamente')
-           
-
-
-        }catch(e){
-            console.error(e)
-        }
-    }
 
 
     return (
@@ -86,6 +64,8 @@ export default function RegisterForm () {
                       </div>
                       <button type="submit" className="btn btn-primary w-100">Iniciar sesión</button>
                     </form>
+
+                    <span style={{color:"red"}}>{error}</span>
   
                   
                   </div>

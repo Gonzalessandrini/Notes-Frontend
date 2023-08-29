@@ -18,10 +18,6 @@ const Note = () => {
     }
 
     getNote()
-
-    
-
-    console.log(note)
     
 
   }, []);
